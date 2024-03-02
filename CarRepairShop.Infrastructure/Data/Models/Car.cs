@@ -14,10 +14,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public CarMake Make { get; set; } = null!;
 
         [Required]
-        public int ModelId { get; set; }
-
-        [Required]
-        public CarModel Model { get; set; } = null!;
+        public string Model { get; set; } = null!;
 
         [Required]
         public DateTime Year { get; set; }
