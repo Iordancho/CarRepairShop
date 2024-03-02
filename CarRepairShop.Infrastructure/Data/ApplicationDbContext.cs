@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using CarRepairShop.Infrastructure.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRepairShop.Infrastructure.Data
@@ -9,5 +10,12 @@ namespace CarRepairShop.Infrastructure.Data
             : base(options)
         {
         }
+
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<CarMake> CarMakes { get; set; }
+        public DbSet<CarModel> CarModels { get; set; }
+        public DbSet<RepairShop> RepairShops { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
     }
 }
