@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 using static CarRepairShop.Infrastructure.Data.DataConstants;
 
@@ -13,6 +14,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public int MakeId { get; set; }
 
         [Required]
+        [ForeignKey(nameof(MakeId))]
         public CarMake Make { get; set; } = null!;
 
         [Required]
@@ -29,6 +31,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public string OwnerId { get; set; } = string.Empty;
 
         [Required]
+        [ForeignKey(nameof(OwnerId))]
         public IdentityUser Owner { get; set; } = null!;
 
         public IList<Reservation> Reservations { get; set; } = new List<Reservation>();

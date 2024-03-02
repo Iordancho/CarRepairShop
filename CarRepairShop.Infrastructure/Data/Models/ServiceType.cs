@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarRepairShop.Infrastructure.Data.Models
 {
@@ -11,8 +12,9 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public string Name { get; set; } = string.Empty;
 
         [Required]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        public List<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public IList<Reservation> Reservations { get; set; } = new List<Reservation>();
     }
 }

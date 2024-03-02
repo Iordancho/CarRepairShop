@@ -9,5 +9,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
 
         [Required]
         public string Name { get; set; } = string.Empty;
+
+        public IList<Car> Cars { get; set; } = new List<Car>();
     }
 }

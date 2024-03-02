@@ -11,6 +11,16 @@ namespace CarRepairShop.Infrastructure.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Reservation>()
+                .HasOne(r => r.RepairShop)
+                .WithMany(r => r.Reservations)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarMake> CarMakes { get; set; }
         public DbSet<RepairShop> RepairShops { get; set; }

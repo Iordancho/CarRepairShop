@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static CarRepairShop.Infrastructure.Data.DataConstants;
 
 namespace CarRepairShop.Infrastructure.Data.Models
@@ -15,6 +16,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
         [Required]
         public int StatusId { get; set; }
         [Required]
+        [ForeignKey(nameof(StatusId))]
         public ReservationStatus Status { get; set; } = null!;
 
         [Required]
@@ -23,16 +25,19 @@ namespace CarRepairShop.Infrastructure.Data.Models
         [Required]
         public int RepairShopId { get; set; }
         [Required]
+        [ForeignKey(nameof(RepairShopId))]
         public RepairShop RepairShop { get; set; } = null!;
 
         [Required]
         public int CarId { get; set; }
         [Required]
+        [ForeignKey(nameof(CarId))]
         public Car Car { get; set; } = null!;
 
         [Required]
         public int ServiceTypeId { get; set; }
         [Required]
+        [ForeignKey(nameof(ServiceTypeId))]
         public ServiceType ServiceType { get; set; } = null!;
     }
 }
