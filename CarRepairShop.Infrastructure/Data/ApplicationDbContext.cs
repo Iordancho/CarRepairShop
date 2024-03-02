@@ -13,7 +13,6 @@ namespace CarRepairShop.Infrastructure.Data
 
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarMake> CarMakes { get; set; }
-        public DbSet<CarModel> CarModels { get; set; }
         public DbSet<RepairShop> RepairShops { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
