@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using CarRepairShop.Data;
+﻿using CarRepairShop.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
