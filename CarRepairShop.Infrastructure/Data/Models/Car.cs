@@ -25,6 +25,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public DateTime Year { get; set; }
 
         [Required]
+        [MaxLength(VINMax)]
         public string VIN { get; set; } = string.Empty;
 
         [Required]
