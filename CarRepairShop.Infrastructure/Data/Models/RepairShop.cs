@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarRepairShop.Infrastructure.Data.Models
 {
@@ -6,6 +7,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string Address { get; set; } = string.Empty;
 
         public string OwnerId { get; set; } = string.Empty;
