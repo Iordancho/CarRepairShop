@@ -1,12 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarRepairShop.Core.Contracts;
+using Microsoft.AspNetCore.Mvc;
+using CarRepairShop.Core.Models;
 
 namespace CarRepairShop.Controllers
 {
     public class CarController : Controller
     {
-        public IActionResult Index()
+        private readonly ICarService carService;
+        public CarController(ICarService _carService)
         {
-            return View();
+            carService = _carService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddCar()
+        {
+            var model = new CarFormViewModel();
+            model.Makes = await carService.GetMakes();
+            return View(model);
         }
     }
 }
