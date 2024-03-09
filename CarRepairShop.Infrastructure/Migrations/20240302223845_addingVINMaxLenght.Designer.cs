@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CarRepairShop.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(CarRepairShopDbContext))]
     [Migration("20240302223845_addingVINMaxLenght")]
     partial class addingVINMaxLenght
     {

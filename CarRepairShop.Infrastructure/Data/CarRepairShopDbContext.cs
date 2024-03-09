@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarRepairShop.Infrastructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class CarRepairShopDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public CarRepairShopDbContext(DbContextOptions<CarRepairShopDbContext> options)
             : base(options)
         {
         }

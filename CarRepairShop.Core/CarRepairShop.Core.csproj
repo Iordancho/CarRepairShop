@@ -10,8 +10,4 @@
     <ProjectReference Include="..\CarRepairShop.Infrastructure\CarRepairShop.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
