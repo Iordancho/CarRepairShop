@@ -6,7 +6,8 @@ namespace CarRepairShop.Core.Contracts
 {
     public interface ICarService
     {
-        public Task<IEnumerable<MakeFormViewModel>> GetMakes();
-        public Task AddAsync(CarFormViewModel model, DateTime productionDate, string userId);
+        Task<IEnumerable<MakeFormViewModel>> GetMakes();
+        Task AddAsync(CarFormViewModel model, DateTime productionDate, string userId);
+        Task<IEnumerable<CarViewModel>> AllCarsAsync();
     }
 }

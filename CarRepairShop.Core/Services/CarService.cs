@@ -3,7 +3,7 @@ using CarRepairShop.Core.Models;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
+using CarRepairShop.Infrastructure.Data;
 
 using CarRepairShop;
 
@@ -42,6 +42,21 @@ namespace CarRepairShop.Core.Services
                 {
                     Id = cm.Id,
                     Name = cm.Name,
+                })
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<CarViewModel>> AllCarsAsync()
+        {
+            return await repository
+                .AllReadOnly<Car>()
+                .Select(c => new CarViewModel() 
+                { 
+                    Id = c.Id,
+                    Make = c.Make.Name,
+                    Model = c.Model,
+                    VIN = c.VIN,
+                    ProductionDate = c.ProductionDate.ToString(DataConstants.DateFormat)
                 })
                 .ToListAsync();
         }

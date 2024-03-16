@@ -1,0 +1,37 @@
+﻿
+@model IEnumerable<CarViewModel>
+
+@{
+    ViewBag.Title = "Your Cars";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row">
+    @foreach (var c in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <div class="card-body">
+                <h5 class="card-title mt-1 text-warning">@c.Make @c.Model</h5>
+                <p class="mb-0"><span class="fw-bold">Production date: </span>@c.ProductionDate</p>
+                <p class="mb-0"><span class="fw-bold">VIN: </span>@c.VIN</p>
+            </div>
+
+            <a asp-controller="Car" asp-action="Details" asp-route-id="@c.Id" class="btn btn-info mb-2 w-100 p-3 fw-bold">View Reservations</a>
+            <a asp-controller="Car" asp-action="Edit" asp-route-id="@c.Id" class="btn btn-danger mb-2 w-100 p-3 fw-bold">Delete Car</a>
+            
+           @*  else
+            {
+                <form class="input-group-sm " asp-controller="Event" asp-action="Join" asp-route-id="@e.Id">
+                    <input type="submit" value="Join the Event" class="fs-6 btn btn-warning mb-3 w-100 p-3 fw-bold" />
+                </form>
+            }  *@
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
