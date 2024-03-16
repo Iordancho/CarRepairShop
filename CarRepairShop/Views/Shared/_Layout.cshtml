@@ -25,8 +25,19 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Car" asp-action="AddCar">Add Car</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cars</a>
+                                <div class="dropdown-menu">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="All">All Cars</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Add">Add Car</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reservations</a>
+                                <div class="dropdown-menu">
+                                    @* <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="AddCar">All Reservations</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="AddCar">New Reservation</a> *@
+                                </div>
                             </li>
                         }
                     </ul>
