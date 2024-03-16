@@ -17,7 +17,7 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddCar()
+        public async Task<IActionResult> Add()
         {
             var model = new CarFormViewModel();
             model.Makes = await carService.GetMakes();
@@ -25,7 +25,7 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCar(CarFormViewModel car)
+        public async Task<IActionResult> Add(CarFormViewModel car)
         {
             DateTime productionDate;
 
@@ -49,7 +49,15 @@ namespace CarRepairShop.Controllers
 
             await carService.AddAsync(car, productionDate, userId);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("All");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> All()
+        {
+            var cars = await carService.AllCarsAsync();
+
+            return View(cars);
         }
     }
 }
