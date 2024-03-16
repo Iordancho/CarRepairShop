@@ -22,7 +22,7 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public string Model { get; set; } = null!;
 
         [Required]
-        public DateTime Year { get; set; }
+        public DateTime ProductionDate { get; set; }
 
         [Required]
         [MaxLength(VINMax)]

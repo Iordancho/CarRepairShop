@@ -14,14 +14,14 @@ namespace CarRepairShop.Core.Models
         public string Model { get; set; } = null!;
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        public string ProductionYear { get; set; } = string.Empty;
+        public string ProductionDate { get; set; } = string.Empty;
 
         [Required]
-        [StringLength(VINMax, ErrorMessage = VINLengthErrorMessage)]
+        [StringLength(VINMax, MinimumLength =VINMax, ErrorMessage = VINLengthErrorMessage)]
         public string VIN { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         public int MakeId { get; set; }
-        public IEnumerable<MakeViewModel> Makes { get; set; } = new List<MakeViewModel>();
+        public IEnumerable<MakeFormViewModel> Makes { get; set; } = new List<MakeFormViewModel>();
     }
 }

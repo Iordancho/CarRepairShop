@@ -11,5 +11,8 @@
         public const string RequiredErrorMessage = "The field is required.";
         public const string StringLenghtErrorMessage = "The field must be between {2} and {1} long.";
         public const string VINLengthErrorMessage = "The VIN number must be 17 characters long.";
+
+        public const string DateFormat = "yyyy-MM-dd";
+
     }
 }

@@ -3,6 +3,10 @@ using CarRepairShop.Core.Models;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+
+using CarRepairShop;
+
 
 namespace CarRepairShop.Core.Services
 {
@@ -15,11 +19,26 @@ namespace CarRepairShop.Core.Services
             repository = _repository;
         }
 
-        public async Task<IEnumerable<MakeViewModel>> GetMakes()
+        public async Task AddAsync(CarFormViewModel model, DateTime productionDate, string userId)
+        {
+            Car car = new Car()
+            {
+                MakeId = model.MakeId,
+                Model = model.Model,
+                VIN = model.VIN,
+                ProductionDate = productionDate,
+                OwnerId = userId,
+            };
+
+            await repository.AddAsync<Car>(car);
+            await repository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<MakeFormViewModel>> GetMakes()
         {
             return await repository
                 .AllReadOnly<CarMake>()
-                .Select(cm => new MakeViewModel()
+                .Select(cm => new MakeFormViewModel()
                 {
                     Id = cm.Id,
                     Name = cm.Name,

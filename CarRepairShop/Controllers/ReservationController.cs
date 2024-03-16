@@ -2,7 +2,7 @@
 
 namespace CarRepairShop.Controllers
 {
-    public class ReservationController : Controller
+    public class ReservationController : BaseController
     {
         public IActionResult Index()
         {
