@@ -1,0 +1,55 @@
+﻿@model ReservationFormViewModel
+
+@{
+    ViewBag.Title = "Make a new Reservation";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="Add" method="post">
+            <div class="mb-3">
+                <label asp-for="@Model.CarId" class="form-label-add-edit text-primary-emphasis">Car</label>
+                <select asp-for="@Model.CarId" class="form-control" aria-required="true">
+                    <option disabled selected value="">Select your car</option>
+                    @foreach (var make in Model.UserCars)
+                    {
+                        <option value="@make.Id">@make.MakeAndModel</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.CarId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Description" class="form-label-add-edit text-primary-emphasis">Description</label>
+                <textarea asp-for="@Model.Description" class="form-control" aria-required="true" rows="5" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.ReservationDateTime" class="form-label-add-edit text-primary-emphasis">Date and Time</label>
+                <input asp-for="@Model.ReservationDateTime" class="form-control" aria-required="true" placeholder="Enter Date and Time"/>
+                <span asp-validation-for="@Model.ReservationDateTime" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.ServiceTypeId" class="form-label-add-edit text-primary-emphasis">Type of Service</label>
+                <select asp-for="@Model.ServiceTypeId" class="form-control" aria-required="true">
+                    <option disabled selected value="">Select service type</option>
+                    @foreach (var type in Model.ServiceTypes)
+                    {
+                        <option value="@type.Id">@type.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.ServiceTypeId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-success mb-2 w-100 p-3 fw-bold" type="submit" value="Make Reservation" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
