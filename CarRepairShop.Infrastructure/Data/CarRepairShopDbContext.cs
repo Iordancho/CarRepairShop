@@ -41,6 +41,32 @@ namespace CarRepairShop.Infrastructure.Data
                     ImageUrl = "https://pictures.dealer.com/l/lithiamotors11/1802/c99cb8a036699f3bcd5cd434df53c93cx.jpg?impolicy=downsize&w=568"
                 });
 
+            builder.Entity<ServiceType>()
+                .HasData(new ServiceType()
+                {
+                    Id = 1,
+                    Name = "Engine Service",
+                    Price = 500
+                },
+                new ServiceType()
+                {
+                    Id = 2,
+                    Name = "Transmission Service",
+                    Price = 400
+                },
+                new ServiceType()
+                {
+                    Id = 3,
+                    Name = "Suspension Service",
+                    Price = 200
+                },
+                new ServiceType()
+                {
+                    Id = 4,
+                    Name = "Tire Service",
+                    Price = 50
+                });
+
 
             base.OnModelCreating(builder);
         }
