@@ -28,6 +28,7 @@ namespace CarRepairShop.Core.Services
                 {
                     Id = r.Id,
                     Address = r.Address,
+                    ImageUrl = r.ImageUrl,
                 })
                 .ToListAsync();
         }
