@@ -23,19 +23,22 @@ namespace CarRepairShop.Infrastructure.Data
                 {
                     Id = 1,
                     Address = "23 G.S. Rakovski Street, Sofia",
-                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
+                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407",
+                    ImageUrl = "https://t4.ftcdn.net/jpg/05/32/90/47/360_F_532904710_cl1gmPtUVGwtiYk10cQlmdQPqaFIlmuD.jpg"
                 },
                 new RepairShop()
                 {
                     Id = 2,
                     Address = "37 Vasil Levski Street, Plovdiv",
-                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
+                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407",
+                    ImageUrl = "https://media.istockphoto.com/id/147255060/photo/automobiles-serum-station.jpg?s=612x612&w=0&k=20&c=svpKwYykZuAqpg8Pn_qBQBfLLA1d21vTl2Tswr9DZQs="
                 },
                 new RepairShop()
                 {
                     Id = 3,
                     Address = "82 Khan Krum Street, Burgas",
-                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
+                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407",
+                    ImageUrl = "https://pictures.dealer.com/l/lithiamotors11/1802/c99cb8a036699f3bcd5cd434df53c93cx.jpg?impolicy=downsize&w=568"
                 });
 
 

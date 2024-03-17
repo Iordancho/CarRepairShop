@@ -13,6 +13,10 @@ namespace CarRepairShop.Infrastructure.Data.Models
         public string Address { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(200)]
+        public string ImageUrl { get; set; } = null!;
+
+        [Required]
         public string OwnerId { get; set; } = string.Empty;
 
         [Required]

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRepairShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CarRepairShopDbContext))]
-    [Migration("20240317120445_RepaiShopsSeeded")]
-    partial class RepaiShopsSeeded
+    [Migration("20240317125710_addedImageUrlToRepairShopAndSeed")]
+    partial class addedImageUrlToRepairShopAndSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,6 +90,11 @@ namespace CarRepairShop.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("OwnerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -105,18 +110,21 @@ namespace CarRepairShop.Infrastructure.Migrations
                         {
                             Id = 1,
                             Address = "23 G.S. Rakovski Street, Sofia",
+                            ImageUrl = "https://t4.ftcdn.net/jpg/05/32/90/47/360_F_532904710_cl1gmPtUVGwtiYk10cQlmdQPqaFIlmuD.jpg",
                             OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
                         },
                         new
                         {
                             Id = 2,
                             Address = "37 Vasil Levski Street, Plovdiv",
+                            ImageUrl = "https://media.istockphoto.com/id/147255060/photo/automobiles-serum-station.jpg?s=612x612&w=0&k=20&c=svpKwYykZuAqpg8Pn_qBQBfLLA1d21vTl2Tswr9DZQs=",
                             OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
                         },
                         new
                         {
                             Id = 3,
                             Address = "82 Khan Krum Street, Burgas",
+                            ImageUrl = "https://pictures.dealer.com/l/lithiamotors11/1802/c99cb8a036699f3bcd5cd434df53c93cx.jpg?impolicy=downsize&w=568",
                             OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
                         });
                 });
