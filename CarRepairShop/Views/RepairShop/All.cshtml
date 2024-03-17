@@ -1,1 +1,37 @@
-﻿
+﻿@model IEnumerable<RepairShopViewModel>
+@{
+    ViewBag.Title = "Welcome to our car Repair shop";
+}
+
+
+<h1 class="text-center disply-4">@ViewBag.Title</h1>
+
+<hr />
+
+<div class="text-center row justify-content-center">
+    @foreach (var c in Model)
+    {
+        <div class="card col-4" style="width: 27rem; ">
+            <div class="card mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="5" aria-label="" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                    <img src="https://media.istockphoto.com/id/147255060/photo/automobiles-serum-station.jpg?s=612x612&w=0&k=20&c=svpKwYykZuAqpg8Pn_qBQBfLLA1d21vTl2Tswr9DZQs=" alt="Alternate Text" />
+                    <rect width="100%" height="100%" fill="#868e96"></rect>
+                </svg>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+
+        
+        </div>
+    }
+</div>
+

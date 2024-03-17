@@ -18,6 +18,27 @@ namespace CarRepairShop.Infrastructure.Data
                 .WithMany(r => r.Reservations)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder.Entity<RepairShop>()
+                .HasData(new RepairShop()
+                {
+                    Id = 1,
+                    Address = "23 G.S. Rakovski Street, Sofia",
+                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
+                },
+                new RepairShop()
+                {
+                    Id = 2,
+                    Address = "37 Vasil Levski Street, Plovdiv",
+                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
+                },
+                new RepairShop()
+                {
+                    Id = 3,
+                    Address = "82 Khan Krum Street, Burgas",
+                    OwnerId = "a3d9b176-7ae8-4451-b3f9-6990b0677407"
+                });
+
+
             base.OnModelCreating(builder);
         }
 
