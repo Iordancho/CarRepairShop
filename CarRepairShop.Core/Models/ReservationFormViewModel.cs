@@ -7,7 +7,6 @@ namespace CarRepairShop.Core.Models
 {
     public class ReservationFormViewModel
     {
-        public int Id { get; set; }
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         [StringLength(ReservationDescriptionMax, MinimumLength = ReservationDescriptionMin, ErrorMessage = StringLenghtErrorMessage)]

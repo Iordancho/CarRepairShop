@@ -1,4 +1,5 @@
 ﻿using CarRepairShop.Infrastructure.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,6 +66,18 @@ namespace CarRepairShop.Infrastructure.Data
                     Id = 4,
                     Name = "Tire Service",
                     Price = 50
+                });
+
+            builder.Entity<ReservationStatus>()
+                .HasData(new ReservationStatus()
+                {
+                    Id = 1,
+                    Name = "Due"
+                },
+                new ReservationStatus()
+                {
+                    Id = 2,
+                    Name = "Past"
                 });
 
 

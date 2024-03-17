@@ -4,6 +4,7 @@ using CarRepairShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRepairShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CarRepairShopDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240317145831_ReservationStatusSeed")]
+    partial class ReservationStatusSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +58,7 @@ namespace CarRepairShop.Infrastructure.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("CarRepairShop.Infrastructure.Data.Models.CarMake", b =>
@@ -73,7 +75,7 @@ namespace CarRepairShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarMakes", (string)null);
+                    b.ToTable("CarMakes");
                 });
 
             modelBuilder.Entity("CarRepairShop.Infrastructure.Data.Models.RepairShop", b =>
@@ -101,7 +103,7 @@ namespace CarRepairShop.Infrastructure.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("RepairShops", (string)null);
+                    b.ToTable("RepairShops");
 
                     b.HasData(
                         new
@@ -165,7 +167,7 @@ namespace CarRepairShop.Infrastructure.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("CarRepairShop.Infrastructure.Data.Models.ReservationStatus", b =>
@@ -182,7 +184,7 @@ namespace CarRepairShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReservationStatus", (string)null);
+                    b.ToTable("ReservationStatus");
 
                     b.HasData(
                         new
@@ -214,7 +216,7 @@ namespace CarRepairShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServiceTypes", (string)null);
+                    b.ToTable("ServiceTypes");
 
                     b.HasData(
                         new

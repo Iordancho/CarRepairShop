@@ -6,5 +6,7 @@ namespace CarRepairShop.Core.Contracts
     {
         Task<IEnumerable<CarReservationViewModel>> GetUserCars(string userId);
         Task<IEnumerable<ServiceTypeReservationViewModel>> GetServiceTypes();
+        Task<bool> IsDateAndTimeAvailable(DateTime reservationDateTime);
+        Task AddAsync(ReservationWithIdFormViewModel model, DateTime reservationDateAndTime);
     }
 }
