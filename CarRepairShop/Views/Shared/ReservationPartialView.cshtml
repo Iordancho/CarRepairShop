@@ -1,13 +1,14 @@
-﻿@model IEnumerable<AllCarReservationsViewModel>
+﻿@model IEnumerable<ReservationsViewModel>
 
-@foreach (var task in Model)
+@foreach (var reservation in Model)
 {
     <div class="card" style="width: 20rem;">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><span class="fw-bold">Description: </span>  @task.Description</li>
-            <li class="list-group-item"><span class="fw-bold">Date: </span>  @task.ReservationDateTime</li>
-            <li class="list-group-item"><span class="fw-bold">Location: </span>  @task.RepairShopLocation</li>
-            <li class="list-group-item"><span class="fw-bold">Service Type: </span>  @task.ServiceType</li>
+            <li class="list-group-item"><span class="fw-bold">Description: </span>  @reservation.Description</li>
+            <li class="list-group-item"><span class="fw-bold">Date: </span>  @reservation.ReservationDateTime</li>
+            <li class="list-group-item"><span class="fw-bold">Location: </span>  @reservation.RepairShopLocation</li>
+            <li class="list-group-item"><span class="fw-bold">Service Type: </span>  @reservation.ServiceType</li>
+            <a asp-controller="Owner" asp-action="AllCarReservations" asp-route-id="@reservation.Id" class="btn btn-info mb-2 w-100 p-3 fw-bold">Finish Service</a>
         </ul>
     </div>
 }

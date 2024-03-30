@@ -14,6 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<ICarService, CarService>();
             services.AddScoped<IReservationService, ReservationService>();
             services.AddScoped<IRepairShopService, RepairShopService>();
+            services.AddScoped<IOwnerService, OwnerService>();
 
             return services;
         }
@@ -41,6 +42,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 options.Password.RequireUppercase = false;
             })
                     .AddEntityFrameworkStores<CarRepairShopDbContext>();
+
+
 
             return services;
         }

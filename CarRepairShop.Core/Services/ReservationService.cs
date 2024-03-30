@@ -48,7 +48,7 @@ namespace CarRepairShop.Core.Services
                 status.CarReservations = await repository
                     .AllReadOnly<Reservation>()
                     .Where(r => r.StatusId == status.Id && r.CarId == id)
-                    .Select(r => new AllCarReservationsViewModel()
+                    .Select(r => new ReservationsViewModel()
                     {
                         Description = r.Description,
                         ReservationDateTime = r.ReservationDateTime.ToString(DataConstants.DateFormat),
@@ -112,5 +112,6 @@ namespace CarRepairShop.Core.Services
                 return true;
             }
         }
+        
     }
 }

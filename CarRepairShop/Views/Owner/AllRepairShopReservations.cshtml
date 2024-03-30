@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ReservationsViewModel>
+
+@{
+    ViewBag.Title = "All Reservations in this Repair Shop";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row justify-content-center">
+
+        @if (Model.Any())
+        {
+            <div class="row  d-flex justify-content-center">
+                @await Html.PartialAsync("~/Views/Shared/ReservationPartialView.cshtml", Model)
+            </div>
+        }
+        else
+        {
+            <p class="text-center">No reservations yet!</p>
+        }
+    
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

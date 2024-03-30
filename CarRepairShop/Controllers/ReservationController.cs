@@ -1,12 +1,9 @@
 ﻿using System.Globalization;
 using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Models;
-using CarRepairShop.Core.Services;
 using CarRepairShop.Extensions;
-using CarRepairShop.Infrastructure.Data.Models;
 using CarRepairShop.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis;
 
 namespace CarRepairShop.Controllers
 {
@@ -63,7 +60,7 @@ namespace CarRepairShop.Controllers
 
         public async Task<IActionResult> AllCarReservations(int id)
         {
-            if(!await reservationService.CarExists(id))
+            if (!await reservationService.CarExists(id))
             {
                 return BadRequest();
             }

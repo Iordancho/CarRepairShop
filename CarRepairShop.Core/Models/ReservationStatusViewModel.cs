@@ -6,6 +6,6 @@
 
         public string Name { get; set; } = string.Empty;
 
-        public IEnumerable<AllCarReservationsViewModel> CarReservations { get; set; } = new List<AllCarReservationsViewModel>();
+        public IEnumerable<ReservationsViewModel> CarReservations { get; set; } = new List<ReservationsViewModel>();
     }
 }
