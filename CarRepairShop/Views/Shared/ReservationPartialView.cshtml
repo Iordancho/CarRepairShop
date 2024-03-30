@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AllCarReservationsViewModel>
+
+@foreach (var task in Model)
+{
+    <div class="card" style="width: 20rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="fw-bold">Description: </span>  @task.Description</li>
+            <li class="list-group-item"><span class="fw-bold">Date: </span>  @task.ReservationDateTime</li>
+            <li class="list-group-item"><span class="fw-bold">Location: </span>  @task.RepairShopLocation</li>
+            <li class="list-group-item"><span class="fw-bold">Service Type: </span>  @task.ServiceType</li>
+        </ul>
+    </div>
+}

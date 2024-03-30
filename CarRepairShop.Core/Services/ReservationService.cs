@@ -1,5 +1,6 @@
 ﻿using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Models;
+using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,35 @@ namespace CarRepairShop.Core.Services
             await repository.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<ReservationStatusViewModel>> GetAllCarReservations(int id)
+        {
+            var statuses = await repository
+                .AllReadOnly<ReservationStatus>()
+                .Select(s => new ReservationStatusViewModel()
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                })
+                .ToListAsync();
+
+            foreach (var status in statuses)
+            {
+                status.CarReservations = await repository
+                    .AllReadOnly<Reservation>()
+                    .Where(r => r.StatusId == status.Id && r.CarId == id)
+                    .Select(r => new AllCarReservationsViewModel()
+                    {
+                        Description = r.Description,
+                        ReservationDateTime = r.ReservationDateTime.ToString(DataConstants.DateFormat),
+                        RepairShopLocation = r.RepairShop.Address,
+                        ServiceType = r.ServiceType.Name
+                    })
+                    .ToListAsync();
+            }
+
+            return statuses;
+        }
+
         public async Task<IEnumerable<CarReservationViewModel>> GetUserCars(string userId)
         {
             return await repository
@@ -58,6 +88,22 @@ namespace CarRepairShop.Core.Services
         public async Task<bool> IsDateAndTimeAvailable(DateTime reservationDateTime)
         {
             if(repository.AllReadOnly<Reservation>().Any(r => r.ReservationDateTime == reservationDateTime))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public async Task<bool> CarExists(int id)
+        {
+            var car = await repository
+                .AllReadOnly<Car>()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if(car == null)
             {
                 return false;
             }
