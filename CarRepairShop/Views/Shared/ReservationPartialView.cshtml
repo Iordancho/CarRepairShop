@@ -8,7 +8,10 @@
             <li class="list-group-item"><span class="fw-bold">Date: </span>  @reservation.ReservationDateTime</li>
             <li class="list-group-item"><span class="fw-bold">Location: </span>  @reservation.RepairShopLocation</li>
             <li class="list-group-item"><span class="fw-bold">Service Type: </span>  @reservation.ServiceType</li>
-            <a asp-controller="Owner" asp-action="AllCarReservations" asp-route-id="@reservation.Id" class="btn btn-info mb-2 w-100 p-3 fw-bold">Finish Service</a>
+            @if (User.IsInRole("Owner") && reservation.StatusId == 1)
+            {
+                <a asp-controller="Owner" asp-action="FinishService" asp-route-id="@reservation.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Finish Service</a>
+            }
         </ul>
     </div>
 }

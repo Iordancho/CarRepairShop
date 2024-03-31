@@ -10,7 +10,7 @@ namespace CarRepairShop.Core.Models
 
         public string Description { get; set; } = string.Empty;
 
-        public string StatusId { get; set; } = string.Empty;
+        public int StatusId { get; set; }
 
         public string ReservationDateTime { get; set; } = string.Empty;
 

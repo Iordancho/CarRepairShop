@@ -17,31 +17,68 @@ namespace CarRepairShop.Core.Services
             repository = _repository;
         }
 
-        public async Task<IEnumerable<ReservationsViewModel>> AllRepairShopReservations(int id)
+        public async Task<IEnumerable<ReservationStatusViewModel>> AllRepairShopReservations(int id)
         {
-            var reservations = await repository
+            //var reservations = await repository
+            //        .AllReadOnly<Reservation>()
+            //        .Where(r => r.RepairShopId == id)
+            //        .Select(r => new ReservationsViewModel()
+            //        {
+            //            Id = r.Id,
+            //            Description = r.Description,
+            //            ReservationDateTime = r.ReservationDateTime.ToString(DataConstants.DateFormat),
+            //            RepairShopLocation = r.RepairShop.Address,
+            //            ServiceType = r.ServiceType.Name
+            //        })
+            //        .ToListAsync();
+
+            //return reservations;
+
+            var statuses = await repository
+                .AllReadOnly<ReservationStatus>()
+                .Select(s => new ReservationStatusViewModel()
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                })
+                .ToListAsync();
+
+            foreach (var status in statuses)
+            {
+                status.CarReservations = await repository
                     .AllReadOnly<Reservation>()
-                    .Where(r => r.RepairShopId == id)
+                    .Where(r => r.StatusId == status.Id && r.RepairShopId == id)
                     .Select(r => new ReservationsViewModel()
                     {
                         Id = r.Id,
                         Description = r.Description,
                         ReservationDateTime = r.ReservationDateTime.ToString(DataConstants.DateFormat),
                         RepairShopLocation = r.RepairShop.Address,
-                        ServiceType = r.ServiceType.Name
+                        ServiceType = r.ServiceType.Name,
+                        StatusId = r.StatusId
                     })
                     .ToListAsync();
+            }
 
-            return reservations;
+            return statuses;
+        }
+        public async Task FinishService(int id)
+        {
+            var reservation = await repository
+                .All<Reservation>()
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            reservation.StatusId = 2;
+            await repository.SaveChangesAsync();
         }
 
         public async Task<bool> RepairShopExists(int id)
         {
-            var car = await repository
+            var repairShop = await repository
                 .AllReadOnly<RepairShop>()
                 .FirstOrDefaultAsync(rp => rp.Id == id);
 
-            if (car == null)
+            if (repairShop == null)
             {
                 return false;
             }
@@ -49,6 +86,15 @@ namespace CarRepairShop.Core.Services
             {
                 return true;
             }
+        }
+
+        public async Task<Reservation?> FindReservationById(int id)
+        {
+            var reservation = await repository
+                .AllReadOnly<Reservation>()
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            return reservation;
         }
     }
 }

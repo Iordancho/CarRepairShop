@@ -23,5 +23,16 @@ namespace CarRepairShop.Controllers
             return View(reservations);
 
         }
+        public async Task<IActionResult> FinishService(int id)
+        {
+            var reservation = await ownerService.FindReservationById(id);
+            if (reservation == null)
+            {
+                return BadRequest();
+            }
+            
+            await ownerService.FinishService(id);
+            return RedirectToAction("All", "RepairShop");
+        }
     }
 }
