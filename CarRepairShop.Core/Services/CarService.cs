@@ -46,10 +46,11 @@ namespace CarRepairShop.Core.Services
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<CarViewModel>> AllCarsAsync()
+        public async Task<IEnumerable<CarViewModel>> AllCarsAsync(string userId)
         {
             return await repository
                 .AllReadOnly<Car>()
+                .Where(c => c.OwnerId == userId)
                 .Select(c => new CarViewModel() 
                 { 
                     Id = c.Id,

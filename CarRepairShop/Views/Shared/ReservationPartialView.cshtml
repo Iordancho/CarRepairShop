@@ -12,6 +12,10 @@
             {
                 <a asp-controller="Owner" asp-action="FinishService" asp-route-id="@reservation.Id" class="btn btn-warning mb-2 w-100 p-3 fw-bold">Finish Service</a>
             }
+            @if (User.IsInRole("Customer") && reservation.StatusId == 1)
+            {
+                <a asp-controller="Reservation" asp-action="Cancel" asp-route-id="@reservation.Id" class="btn btn-danger mb-2 w-100 p-3 fw-bold">Cancel reservation</a>
+            }
         </ul>
     </div>
 }

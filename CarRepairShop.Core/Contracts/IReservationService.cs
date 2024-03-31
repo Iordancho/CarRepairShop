@@ -10,5 +10,7 @@ namespace CarRepairShop.Core.Contracts
         Task AddAsync(ReservationWithIdFormViewModel model, DateTime reservationDateAndTime);
         Task<IEnumerable<ReservationStatusViewModel>> GetAllCarReservations(int id);
         Task<bool> CarExists(int id);
+        Task<ReservationCancelViewModel?> FindReservationById(int id);
+
     }
 }

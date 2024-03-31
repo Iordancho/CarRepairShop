@@ -53,7 +53,8 @@ namespace CarRepairShop.Core.Services
                         Description = r.Description,
                         ReservationDateTime = r.ReservationDateTime.ToString(DataConstants.DateFormat),
                         RepairShopLocation = r.RepairShop.Address,
-                        ServiceType = r.ServiceType.Name
+                        ServiceType = r.ServiceType.Name,
+                        StatusId = r.StatusId
                     })
                     .ToListAsync();
             }
@@ -65,6 +66,7 @@ namespace CarRepairShop.Core.Services
         {
             return await repository
                 .AllReadOnly<Car>()
+                .Where(c => c.OwnerId == userId)
                 .Select(cm => new CarReservationViewModel()
                 {
                     Id = cm.Id,
@@ -112,6 +114,22 @@ namespace CarRepairShop.Core.Services
                 return true;
             }
         }
-        
+
+        public async Task<ReservationCancelViewModel?> FindReservationById(int id)
+        {
+            var reservation = await repository
+                .All<Reservation>()
+                .Where(r => r.Id == id)
+                .Select(r => new ReservationCancelViewModel()
+                {
+                    Id = r.Id,
+                    Description = r.Description,
+                    Date = r.ReservationDateTime.ToString(DataConstants.DateFormat),
+                    ServiceType = r.ServiceType.Name
+                })
+                .FirstOrDefaultAsync();
+
+            return reservation;
+        }
     }
 }

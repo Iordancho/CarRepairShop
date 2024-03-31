@@ -55,7 +55,8 @@ namespace CarRepairShop.Controllers
         [HttpGet]
         public async Task<IActionResult> All()
         {
-            var cars = await carService.AllCarsAsync();
+            var userId = User.Id();
+            var cars = await carService.AllCarsAsync(userId);
 
             return View(cars);
         }

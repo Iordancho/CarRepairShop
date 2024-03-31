@@ -3,6 +3,7 @@ using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Models;
 using CarRepairShop.Extensions;
 using CarRepairShop.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRepairShop.Controllers
@@ -67,6 +68,19 @@ namespace CarRepairShop.Controllers
             var reservations = await reservationService.GetAllCarReservations(id);
 
             return View(reservations);
+        }
+
+        [Authorize(Roles ="Customer")]
+        public async Task<IActionResult> Cancel(int id)
+        {
+            var reservation = await reservationService.FindReservationById(id);
+
+            if(reservation == null)
+            {
+                return BadRequest();
+            }
+
+            return View(reservation);
         }
     }
 }
