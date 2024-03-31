@@ -6,5 +6,7 @@
         IQueryable<T> AllReadOnly<T>() where T : class;
         Task AddAsync<T>(T entity) where T : class;
         Task<int> SaveChangesAsync();
+        Task RemoveRangeAsync<T>(IEnumerable<T> entities) where T : class;
+        Task RemoveAsync<T>(T entity) where T : class;
     }
 }

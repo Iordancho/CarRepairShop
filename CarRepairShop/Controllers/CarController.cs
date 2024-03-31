@@ -59,5 +59,32 @@ namespace CarRepairShop.Controllers
 
             return View(cars);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var car = await carService.FindCarById(id);
+
+            if(car == null)
+            {
+                return BadRequest();
+            }
+            return View(car);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var car = await carService.FindCarById(id);
+
+            if (car == null)
+            {
+                return BadRequest();
+            }
+
+            await carService.RemoveCarReservationsAsync(id);
+            await carService.RemoveCarAsync(id);
+            return RedirectToAction("All");
+        }
     }
 }

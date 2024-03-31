@@ -1,0 +1,28 @@
+﻿@model CarDeleteViewModel
+@{
+    ViewBag.Title = "Delete Car";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title text-center">@Model.MakeAndModel</h3>
+                <p class="text-danger mt-3 text-center">"Are you sure you want to delete your car?"</p>
+            </div>
+            <div class="card-footer">
+                <form asp-action="DeleteConfirmed" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                        <a asp-action="All" class="btn btn-outline-primary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

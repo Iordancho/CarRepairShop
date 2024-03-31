@@ -60,5 +60,41 @@ namespace CarRepairShop.Core.Services
                 })
                 .ToListAsync();
         }
+
+        public async Task<CarDeleteViewModel?> FindCarById(int id)
+        {
+             var car = await repository
+                .All<Car>()
+                .Where(c => c.Id == id)
+                .Select(c => new CarDeleteViewModel()
+                {
+                    Id = c.Id,
+                    MakeAndModel = c.Make.Name + " " + c.Model
+                })
+                .FirstOrDefaultAsync();
+
+            return car;
+        }
+
+        public async Task RemoveCarReservationsAsync(int id)
+        {
+            var carReservations = await repository
+                .All<Reservation>()
+                .Where(r => r.CarId == id)
+                .ToListAsync();
+
+            await repository.RemoveRangeAsync(carReservations);
+            await repository.SaveChangesAsync();
+        }
+
+        public async Task RemoveCarAsync(int id)
+        {
+            var car = await repository
+                .All<Car>()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            await repository.RemoveAsync(car);
+            await repository.SaveChangesAsync();
+        }
     }
 }

@@ -29,6 +29,14 @@ namespace CarRepairShop.Infrastructure.Data.Common
         {
             await DbSet<T>().AddAsync(entity);
         }
+        public async Task RemoveRangeAsync<T>(IEnumerable<T> entities) where T : class
+        {
+            DbSet<T>().RemoveRange(entities);
+        }
+        public async Task RemoveAsync<T>(T entity) where T : class
+        {
+            DbSet<T>().Remove(entity);
+        }
 
         public async Task<int> SaveChangesAsync()
         {
