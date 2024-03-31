@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using CarRepairShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRepairShop.Controllers
@@ -17,7 +18,6 @@ namespace CarRepairShop.Controllers
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();

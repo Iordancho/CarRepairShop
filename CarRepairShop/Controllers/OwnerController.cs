@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRepairShop.Controllers
 {
+    [Authorize(Roles ="Owner")]
     public class OwnerController : BaseController
     {
         private readonly IOwnerService ownerService;
