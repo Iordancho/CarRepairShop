@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Models;
+using CarRepairShop.Core.Services;
 using CarRepairShop.Extensions;
 using CarRepairShop.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -62,15 +63,23 @@ namespace CarRepairShop.Controllers
 
         public async Task<IActionResult> AllCarReservations(int id)
         {
-            if (!await reservationService.CarExists(id))
+            var car = await reservationService.CarExists(id);
+
+            if (car == null)
             {
                 return BadRequest();
             }
+            if(car.OwnerId != User.Id())
+            {
+                return Unauthorized();
+            }
+
             var reservations = await reservationService.GetAllCarReservations(id);
 
             return View(reservations);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Cancel(int id)
         {
             var reservation = await reservationService.FindReservationById(id);
@@ -79,8 +88,29 @@ namespace CarRepairShop.Controllers
             {
                 return BadRequest();
             }
+            if(reservation.OwnerId != User.Id())
+            {
+                return Unauthorized();
+            }
 
             return View(reservation);
+        }
+
+        public async Task<IActionResult> CancelConfirmed(int id)
+        {
+            var reservation = await reservationService.FindReservationById(id);
+
+            if (reservation == null)
+            {
+                return BadRequest();
+            }
+            if (reservation.OwnerId != User.Id())
+            {
+                return Unauthorized();
+            }
+
+            await reservationService.RemoveReservationAsync(id);
+            return RedirectToAction("All", "Car");
         }
     }
 }

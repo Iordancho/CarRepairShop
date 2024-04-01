@@ -12,5 +12,6 @@ namespace CarRepairShop.Core.Models
         public string Description { get; set; } = string.Empty;
         public string Date { get; set; } = string.Empty;
         public string ServiceType { get; set; } = string.Empty;
+        public string OwnerId { get; set; } = string.Empty;
     }
 }

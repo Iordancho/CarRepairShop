@@ -66,12 +66,19 @@ namespace CarRepairShop.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
+            
             var car = await carService.FindCarById(id);
+
 
             if(car == null)
             {
                 return BadRequest();
             }
+            if(car.OwnerId != User.Id())
+            {
+                return Unauthorized();
+            }
+            
             return View(car);
         }
 
@@ -83,6 +90,10 @@ namespace CarRepairShop.Controllers
             if (car == null)
             {
                 return BadRequest();
+            }
+            if (car.OwnerId != User.Id())
+            {
+                return Unauthorized();
             }
 
             await carService.RemoveCarReservationsAsync(id);

@@ -70,7 +70,8 @@ namespace CarRepairShop.Core.Services
                 .Select(c => new CarDeleteViewModel()
                 {
                     Id = c.Id,
-                    MakeAndModel = c.Make.Name + " " + c.Model
+                    MakeAndModel = c.Make.Name + " " + c.Model,
+                    OwnerId = c.OwnerId,
                 })
                 .FirstOrDefaultAsync();
 

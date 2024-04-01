@@ -1,4 +1,5 @@
 ﻿using CarRepairShop.Core.Models;
+using CarRepairShop.Infrastructure.Data.Models;
 
 namespace CarRepairShop.Core.Contracts
 {
@@ -9,8 +10,9 @@ namespace CarRepairShop.Core.Contracts
         Task<bool> IsDateAndTimeAvailable(DateTime reservationDateTime);
         Task AddAsync(ReservationWithIdFormViewModel model, DateTime reservationDateAndTime);
         Task<IEnumerable<ReservationStatusViewModel>> GetAllCarReservations(int id);
-        Task<bool> CarExists(int id);
+        Task<Car> CarExists(int id);
         Task<ReservationCancelViewModel?> FindReservationById(int id);
+        Task RemoveReservationAsync(int id);
 
     }
 }
