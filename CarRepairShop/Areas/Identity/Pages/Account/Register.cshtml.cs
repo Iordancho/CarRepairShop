@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using CarRepairShop.Core.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -29,6 +30,8 @@ namespace CarRepairShop.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> roleManager;
+
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -117,7 +120,7 @@ namespace CarRepairShop.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
-
+                await _userManager.AddToRoleAsync(user, "Customer");
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -148,6 +151,9 @@ namespace CarRepairShop.Areas.Identity.Pages.Account
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
+
+                
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -167,6 +173,15 @@ namespace CarRepairShop.Areas.Identity.Pages.Account
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
+
+        public async Task AddRole()
+        {
+            var user = await _userManager.FindByEmailAsync(Input.Email);
+
+            await _userManager.AddToRoleAsync(user, "Customer");
+
+        }
+
 
         private IUserEmailStore<IdentityUser> GetEmailStore()
         {

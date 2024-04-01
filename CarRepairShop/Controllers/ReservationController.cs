@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRepairShop.Controllers
 {
+    [Authorize(Roles ="Admin, Customer")]
     public class ReservationController : BaseController
     {
         private readonly IReservationService reservationService;
@@ -70,7 +71,6 @@ namespace CarRepairShop.Controllers
             return View(reservations);
         }
 
-        [Authorize(Roles ="Customer")]
         public async Task<IActionResult> Cancel(int id)
         {
             var reservation = await reservationService.FindReservationById(id);

@@ -5,9 +5,11 @@ using CarRepairShop.Infrastructure.Data;
 using System.Globalization;
 using CarRepairShop.Infrastructure.Data.Models;
 using CarRepairShop.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarRepairShop.Controllers
 {
+    [Authorize(Roles ="Admin, Customer")]
     public class CarController : BaseController
     {
         private readonly ICarService carService;
