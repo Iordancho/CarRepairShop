@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CarRepairShop.Core.Models.UserWithRolesViewModel>
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row justify-content-center">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Change Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var user in Model)
+            {
+                <tr class="table-active">
+                    <th scope="row">@user.Email</th>
+                    <td>
+                        @foreach (var role in user.Roles)
+                        {
+                            <span>@role </span>
+                        }
+                    </td>
+                    <td><a asp-action="AddRole" asp-controller="Admin" asp-area="Admin" class="btn btn-primary">Change Role</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

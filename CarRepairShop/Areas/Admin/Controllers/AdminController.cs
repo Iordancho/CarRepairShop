@@ -65,5 +65,12 @@ namespace CarRepairShop.Areas.Admin.Controllers
             var reservations = await adminService.AllReservationsAdminAsync();
             return View(reservations);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AllUsers()
+        {
+            var users = await adminService.AllUsersAdminAsync();
+            return View(users);
+        }
     }
 }

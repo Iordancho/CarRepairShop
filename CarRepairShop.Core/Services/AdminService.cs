@@ -9,16 +9,19 @@ using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
 using CarRepairShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarRepairShop.Core.Services
 {
     public class AdminService : IAdminService
     {
+        private readonly UserManager<IdentityUser> userManager;
         private readonly IRepository repository;
 
-        public AdminService(IRepository _repository)
+        public AdminService(IRepository _repository, UserManager<IdentityUser> _userManager)
         {
             repository = _repository;
+            userManager = _userManager;
         }
 
         public async Task<IEnumerable<CarViewModel>> AllCarsAdminAsync()
@@ -52,6 +55,29 @@ namespace CarRepairShop.Core.Services
                        OwnerName = r.Car.Owner.UserName
                    })
                    .ToListAsync();
+        }
+
+        public async Task<IEnumerable<UserWithRolesViewModel>> AllUsersAdminAsync()
+        {
+            List<UserWithRolesViewModel> usersWithRoles = new List<UserWithRolesViewModel>();
+
+            var users = await userManager.Users.ToListAsync();
+
+            foreach (var user in users)
+            {
+                
+                var roles = await userManager.GetRolesAsync(user);
+
+                var userWithRoles = new UserWithRolesViewModel
+                {
+                    Email = user.Email,
+                    Roles = roles
+                };
+
+                usersWithRoles.Add(userWithRoles);
+            }
+
+            return usersWithRoles;
         }
     }
 }
