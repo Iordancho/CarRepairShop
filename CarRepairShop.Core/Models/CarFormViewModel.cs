@@ -16,7 +16,7 @@ namespace CarRepairShop.Core.Models
         [Required(ErrorMessage = RequiredErrorMessage)]
         public string ProductionDate { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = RequiredErrorMessage)]
         [StringLength(VINMax, MinimumLength =VINMax, ErrorMessage = VINLengthErrorMessage)]
         public string VIN { get; set; } = string.Empty;
 

@@ -55,12 +55,13 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All(AllCarsSearchViewModel query)
         {
             var userId = User.Id();
-            var cars = await carService.AllCarsAsync(userId);
+            var model = await carService.AllCarsAsync(userId, query.SearchTerm);
 
-            return View(cars);
+            query.Cars = model;
+            return View(query);
         }
 
         [HttpGet]

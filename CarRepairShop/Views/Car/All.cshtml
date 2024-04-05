@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<CarViewModel>
+@model AllCarsSearchViewModel
 
 @{
     ViewBag.Title = "Your Cars";
@@ -9,8 +9,15 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
+    <form method="get" class="d-flex">
+        <label asp-for="SearchTerm" class="text-center"></label>
+        <input asp-for="SearchTerm" class="form-control" placeholder="Type Make or Model">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+<hr />
+
 <div class="text-center row justify-content-center">
-    @foreach (var c in Model)
+    @foreach (var c in Model.Cars)
     {
         <div class="card col-4" style="width: 20rem; ">
             <div class="card-body">
