@@ -29,6 +29,8 @@
                     @if(User.IsInRole("Owner"))
                     {
                         <a asp-controller="Owner" asp-action="AllRepairShopReservations" asp-route-id="@c.Id" class="btn btn-info mb-2 w-100 p-3 fw-bold">View Reservations</a>
+                        
+                        
                     }
                     else
                     {
@@ -36,9 +38,30 @@
                     }
                 </div>
             </div>
-
-        
         </div>
     }
+    <hr/>
+    @if (User.IsInRole("Owner"))
+    {
+        <button class="btn btn-info mb-2 w-100 p-3 fw-bold" id="statistics-button">Show Statistics</button>
+        <div class=" bg-light d-none" id="statistics">
+            <div class="row">
+                <h4 class=" text-center" id="total-reservations"></h4>
+            </div>
+        </div>
+    }
+   
 </div>
+
+@section Scripts {
+    <script>
+        $('#statistics-button').on('click', ev => {
+            $.get('/api/statistic', data => {
+                $('#total-reservations').text(data.totalReservations + ' ' + 'Reservations')
+                $('#statistics').removeClass('d-none')
+                $('statistics-button').hide
+            })
+        })
+    </script>
+}
 
