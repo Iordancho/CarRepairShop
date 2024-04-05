@@ -25,7 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Identity\Data\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="wwwroot\images\icons\" />
   </ItemGroup>
 

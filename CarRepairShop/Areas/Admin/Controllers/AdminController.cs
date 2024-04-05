@@ -1,11 +1,12 @@
-﻿using CarRepairShop.Core.Models;
+﻿using CarRepairShop.Areas.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CarRepairShop.Controllers
+namespace CarRepairShop.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
@@ -25,21 +26,26 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddRole(AddRoleToUserFormModel user)
+        public async Task<IActionResult> AddRole(AddRoleToUserFormModel model)
         {
-            string roleName = user.RoleName;
+            string roleName = model.RoleName;
             if (!await roleManager.RoleExistsAsync(roleName))
                 await roleManager.CreateAsync(new IdentityRole(roleName));
 
-            var userName = await userManager.FindByEmailAsync(user.Email);
+            var userName = await userManager.FindByEmailAsync(model.Email);
             if (userName == null)
             {
-                ModelState.AddModelError(nameof(user.Email), $"User with this email dont exist");
-                return View(user);
+                ModelState.AddModelError(nameof(model.Email), $"User with this email dont exist");
+                return View(model);
             }
             await userManager.AddToRoleAsync(userName, roleName);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToPage("/Home/Index");
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View();
         }
     }
 }

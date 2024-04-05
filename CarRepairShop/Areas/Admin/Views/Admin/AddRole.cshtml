@@ -3,27 +3,36 @@
 @{
     ViewBag.Title = "Add role to profile";
 }
+<hr />
 
+<head>
+    <!-- Other meta tags and title -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/css/luxstylecss.css" />
+    <link rel="stylesheet" href="~/CarRepairShop.styles.css" asp-append-version="true" />
+    <!-- Other CSS files -->
+</head>
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
 <div class="row">
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <form asp-action="AddRole" method="post">
+        <form asp-action="AddRole" method="post" asp-route-area="admin">
 
             <div class="col">
                 <label asp-for="@Model.Email" class="form-label-add-edit text-primary-emphasis">Email</label>
-                <input asp-for="@Model.Email" class="form-control" aria-required="true" placeholder="Enter email" />
+                <input name="Email"asp-for="@Model.Email" class="form-control" aria-required="true" placeholder="Enter email" />
                 <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
             <div class="col">
                 <label asp-for="@Model.RoleName" class="form-label-add-edit text-primary-emphasis">Role Name</label>
-                <input asp-for="@Model.RoleName" class="form-control" aria-required="true" placeholder="Enter Role Name" />
+                <input name="RoleName" asp-for="@Model.RoleName" class="form-control" aria-required="true" placeholder="Enter Role Name" />
                 <span asp-validation-for="@Model.RoleName" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <input class="btn btn-success mb-2 w-100 p-3 fw-bold" type="submit" value="AddRole" />
+                <input class="btn btn-success mb-2 w-100 p-3 fw-bold" type="submit" value="AddRole"/>
             </div>
         </form>
     </div>

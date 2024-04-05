@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRepairShop.Core.Models
+namespace CarRepairShop.Areas.Admin.Models
 {
     public class AddRoleToUserFormModel
     {
