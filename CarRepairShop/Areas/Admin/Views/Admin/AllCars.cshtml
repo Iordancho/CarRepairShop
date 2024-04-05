@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CarRepairShop.Core.Models.CarViewModel>
+
+@{
+    ViewBag.Title = "All Cars";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row justify-content-center">
+    @foreach (var c in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <div class="card-body">
+                <h5 class="card-title mt-1 text-warning">@c.Make @c.Model</h5>
+                <p class="mb-0"><span class="fw-bold">Production date: </span>@c.ProductionDate</p>
+                <p class="mb-0"><span class="fw-bold">VIN: </span>@c.VIN</p>
+                <p class="mb-0"><span class="fw-bold">Owner: </span>@c.OwnerName</p>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

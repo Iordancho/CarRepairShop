@@ -13,5 +13,6 @@ namespace CarRepairShop.Core.Models
         public string  Make { get; set; }
         public string ProductionDate { get; set; }
         public string VIN { get; set; }
+        public string OwnerName { get; set; }
     }
 }

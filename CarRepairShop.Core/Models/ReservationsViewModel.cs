@@ -17,5 +17,7 @@ namespace CarRepairShop.Core.Models
         public string RepairShopLocation { get; set; } = string.Empty;
 
         public string ServiceType { get; set; } = string.Empty;
+
+        public string OwnerName { get; set; } = string.Empty;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using CarRepairShop.Areas.Admin.Models;
+using CarRepairShop.Core.Contracts;
+using CarRepairShop.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +13,13 @@ namespace CarRepairShop.Areas.Admin.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly IAdminService adminService;
 
-        public AdminController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager)
+        public AdminController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IAdminService _adminService)
         {
             roleManager = _roleManager;
             userManager = _userManager;
+            adminService = _adminService;
         }
 
         [HttpGet]
@@ -46,6 +50,20 @@ namespace CarRepairShop.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllCars()
+        {
+            var cars = await adminService.AllCarsAdminAsync();
+            return View(cars);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllReservations()
+        {
+            var reservations = await adminService.AllReservationsAdminAsync();
+            return View(reservations);
         }
     }
 }
