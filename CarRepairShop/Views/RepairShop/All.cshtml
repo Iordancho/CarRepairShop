@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<RepairShopViewModel>
 @{
     ViewBag.Title = "Choose a location for your service!";
+    if (User.IsInRole("Owner"))
+    {
+	    ViewBag.Title = "Choose a Repair shop to see reservations!";
+    }
 }
 
 

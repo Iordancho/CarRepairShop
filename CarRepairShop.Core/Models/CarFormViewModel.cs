@@ -1,7 +1,4 @@
-﻿using CarRepairShop.Infrastructure.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using static CarRepairShop.Infrastructure.Data.DataConstants;
 
 

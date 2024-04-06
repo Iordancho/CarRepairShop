@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CarRepairShop.Areas.Admin.Models;
 using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Models;
+using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
-using CarRepairShop.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using CarRepairShop.Areas.Admin.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRepairShop.Core.Services
 {

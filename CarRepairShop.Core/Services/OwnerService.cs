@@ -3,7 +3,6 @@ using CarRepairShop.Core.Models;
 using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarRepairShop.Core.Services

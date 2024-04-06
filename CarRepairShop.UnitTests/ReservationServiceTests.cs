@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarRepairShop.Core.Contracts;
-using CarRepairShop.Core.Models;
+﻿using CarRepairShop.Core.Models;
 using CarRepairShop.Core.Services;
 using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
@@ -22,12 +16,10 @@ namespace CarRepairShop.UnitTests
         [OneTimeSetUp]
         public void Setup()
         {
-            // Initialize in-memory database for testing
             options = new DbContextOptionsBuilder<CarRepairShopDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestDatabase")
                 .Options;
 
-            // Initialize reservation service with the mock repository
             var dbContext = new CarRepairShopDbContext(options);
             reservationService = new ReservationService(new Repository(dbContext));
         }

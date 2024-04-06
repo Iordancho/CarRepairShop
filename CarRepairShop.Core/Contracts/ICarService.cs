@@ -1,6 +1,4 @@
 ﻿using CarRepairShop.Core.Models;
-using CarRepairShop.Infrastructure.Data.Common;
-using CarRepairShop.Infrastructure.Data.Models;
 
 
 namespace CarRepairShop.Core.Contracts

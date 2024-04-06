@@ -1,16 +1,10 @@
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Models;
 using CarRepairShop.Core.Services;
 using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.EntityFrameworkCore.Storage;
 using Moq;
-using NUnit.Framework;
 
 namespace CarRepairShop.UnitTests
 {
@@ -24,12 +18,10 @@ namespace CarRepairShop.UnitTests
         [OneTimeSetUp]
         public void Setup()
         {
-            // Initialize in-memory database for testing
             options = new DbContextOptionsBuilder<CarRepairShopDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestDatabase")
                 .Options;
 
-            // Initialize car service with the mock repository
             var dbContext = new CarRepairShopDbContext(options);
             carService = new CarService(new Repository(dbContext));
         }

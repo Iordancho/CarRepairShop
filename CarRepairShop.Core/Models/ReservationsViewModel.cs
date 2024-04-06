@@ -1,8 +1,4 @@
-﻿using CarRepairShop.Infrastructure.Data.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-
-namespace CarRepairShop.Core.Models
+﻿namespace CarRepairShop.Core.Models
 {
     public class ReservationsViewModel
     {

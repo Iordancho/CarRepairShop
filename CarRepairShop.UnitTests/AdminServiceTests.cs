@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarRepairShop.Core.Services;
-using CarRepairShop.Infrastructure.Data.Common;
+﻿using CarRepairShop.Core.Services;
 using CarRepairShop.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using CarRepairShop.Core.Contracts;
+using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Moq;
-using CarRepairShop.Areas.Admin.Models;
-using CarRepairShop.Core.Models;
 
 namespace CarRepairShop.UnitTests
 {
@@ -36,20 +28,6 @@ namespace CarRepairShop.UnitTests
             // Initialize car service with the mock repository
             var dbContext = new CarRepairShopDbContext(options);
             adminService = new AdminService(new Repository(dbContext), userManager, roleManager);
-
-            List<IdentityUser> users = new List<IdentityUser>
-            {
-                new IdentityUser { Id = "1", Email = "user1@example.com" },
-                new IdentityUser { Id = "2", Email = "user2@example.com" }
-                // Add more test users as needed
-            };
-
-            var userStore = new Mock<IUserStore<IdentityUser>>();
-            mockUserManager = new Mock<UserManager<IdentityUser>>(userStore.Object, null, null, null, null, null, null, null, null);
-
-            mockUserManager.Setup(m => m.Users).Returns(users.AsQueryable());
-
-            
         }
 
         [Test]
@@ -86,6 +64,13 @@ namespace CarRepairShop.UnitTests
 
             // Assert
             Assert.AreEqual(2, carViewModels.Count());
+            Assert.That(carViewModels.Any(c => c.Id == 1));
+            Assert.That(carViewModels.Any(c => c.Id == 2));
+            Assert.That(carViewModels.Any(c => c.Make == "Honda"));
+            Assert.That(carViewModels.Any(c => c.Make == "Toyota"));
+            Assert.That(carViewModels.Any(c => c.Model == "Accord"));
+            Assert.That(carViewModels.Any(c => c.Model == "Camry"));
+
         }
 
         [Test]
@@ -127,9 +112,14 @@ namespace CarRepairShop.UnitTests
 
             // Assert
             Assert.AreEqual(2, reservationsViewModels.Count());
+            Assert.That(reservationsViewModels.Any(c => c.Id == 1));
+            Assert.That(reservationsViewModels.Any(c => c.Id == 2));
+            Assert.That(reservationsViewModels.Any(c => c.Description == "Regular Maintenance"));
+            Assert.That(reservationsViewModels.Any(c => c.Description == "Brake Repair"));
+
         }
 
-       
+
 
     }
 }

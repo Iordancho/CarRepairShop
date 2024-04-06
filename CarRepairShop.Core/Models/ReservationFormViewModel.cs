@@ -1,6 +1,4 @@
-﻿using CarRepairShop.Infrastructure.Data.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using static CarRepairShop.Infrastructure.Data.DataConstants;
 
 namespace CarRepairShop.Core.Models

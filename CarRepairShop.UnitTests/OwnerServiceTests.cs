@@ -22,12 +22,12 @@ namespace CarRepairShop.UnitTests
         [OneTimeSetUp]
         public void Setup()
         {
-            // Initialize in-memory database for testing
+            
             options = new DbContextOptionsBuilder<CarRepairShopDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestDatabase")
                 .Options;
 
-            // Initialize car service with the mock repository
+            
             var dbContext = new CarRepairShopDbContext(options);
             ownerService = new OwnerService(new Repository(dbContext));
         }
@@ -37,7 +37,7 @@ namespace CarRepairShop.UnitTests
         {
             // Arrange
             var reservationId = 6;
-            var reservation = new Reservation { Id = reservationId, StatusId = 1 }; // Assuming StatusId 1 represents the 'Pending' status
+            var reservation = new Reservation { Id = reservationId, StatusId = 1 }; 
 
             using (var context = new CarRepairShopDbContext(options))
             {
@@ -53,7 +53,7 @@ namespace CarRepairShop.UnitTests
             {
                 var updatedReservation = await context.Reservations.FindAsync(reservationId);
                 Assert.NotNull(updatedReservation);
-                Assert.AreEqual(2, updatedReservation.StatusId); // Assuming StatusId 2 represents the 'Finished' status
+                Assert.AreEqual(2, updatedReservation.StatusId); 
             }
         }
 
