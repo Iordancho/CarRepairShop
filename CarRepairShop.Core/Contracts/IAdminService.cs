@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarRepairShop.Areas.Admin.Models;
 using CarRepairShop.Core.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -13,5 +14,6 @@ namespace CarRepairShop.Core.Contracts
         Task<IEnumerable<CarViewModel>> AllCarsAdminAsync();
         Task<IEnumerable<ReservationsViewModel>> AllReservationsAdminAsync();
         Task<IEnumerable<UserWithRolesViewModel>> AllUsersAdminAsync();
+        Task AddRole(AddRoleToUserFormModel model, IdentityUser userName);
     }
 }

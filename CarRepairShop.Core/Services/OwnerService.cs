@@ -19,20 +19,6 @@ namespace CarRepairShop.Core.Services
 
         public async Task<IEnumerable<ReservationStatusViewModel>> AllRepairShopReservations(int id)
         {
-            //var reservations = await repository
-            //        .AllReadOnly<Reservation>()
-            //        .Where(r => r.RepairShopId == id)
-            //        .Select(r => new ReservationsViewModel()
-            //        {
-            //            Id = r.Id,
-            //            Description = r.Description,
-            //            ReservationDateTime = r.ReservationDateTime.ToString(DataConstants.DateFormat),
-            //            RepairShopLocation = r.RepairShop.Address,
-            //            ServiceType = r.ServiceType.Name
-            //        })
-            //        .ToListAsync();
-
-            //return reservations;
 
             var statuses = await repository
                 .AllReadOnly<ReservationStatus>()

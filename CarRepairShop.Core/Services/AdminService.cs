@@ -10,19 +10,34 @@ using CarRepairShop.Infrastructure.Data.Models;
 using CarRepairShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using CarRepairShop.Areas.Admin.Models;
 
 namespace CarRepairShop.Core.Services
 {
     public class AdminService : IAdminService
     {
         private readonly UserManager<IdentityUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly IRepository repository;
+        private Repository repository1;
+        private RoleManager<IdentityUser> roleManager1;
 
-        public AdminService(IRepository _repository, UserManager<IdentityUser> _userManager)
+        public AdminService(IRepository _repository, UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             repository = _repository;
             userManager = _userManager;
+            roleManager = _roleManager;
         }
+
+        public async Task AddRole(AddRoleToUserFormModel model, IdentityUser userName)
+        {
+            string roleName = model.RoleName;
+            if (!await roleManager.RoleExistsAsync(roleName))
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+
+            await userManager.AddToRoleAsync(userName, roleName);
+        }
+
 
         public async Task<IEnumerable<CarViewModel>> AllCarsAdminAsync()
         {

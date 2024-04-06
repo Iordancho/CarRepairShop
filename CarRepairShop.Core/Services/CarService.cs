@@ -13,11 +13,14 @@ namespace CarRepairShop.Core.Services
     public class CarService : ICarService
     {
         private readonly IRepository repository;
+        private CarRepairShopDbContext data;
 
         public CarService(IRepository _repository)
         {
             repository = _repository;
         }
+
+       
 
         public async Task AddAsync(CarFormViewModel model, DateTime productionDate, string userId)
         {

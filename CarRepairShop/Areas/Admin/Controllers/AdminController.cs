@@ -1,6 +1,7 @@
 ﻿using CarRepairShop.Areas.Admin.Models;
 using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Services;
+using CarRepairShop.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,19 +33,16 @@ namespace CarRepairShop.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRole(AddRoleToUserFormModel model)
         {
-            string roleName = model.RoleName;
-            if (!await roleManager.RoleExistsAsync(roleName))
-                await roleManager.CreateAsync(new IdentityRole(roleName));
-
             var userName = await userManager.FindByEmailAsync(model.Email);
             if (userName == null)
             {
-                ModelState.AddModelError(nameof(model.Email), $"User with this email dont exist");
+                ModelState.AddModelError(nameof(model.Email), $"User with this email don't exist");
                 return View(model);
             }
-            await userManager.AddToRoleAsync(userName, roleName);
 
-            return RedirectToPage("/Home/Index");
+            await adminService.AddRole(model, userName);
+
+            return RedirectToAction("Index", "Admin");
         }
 
         public async Task<IActionResult> Index()
