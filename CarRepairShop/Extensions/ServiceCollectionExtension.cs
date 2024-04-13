@@ -17,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IStatisticService, StatisticService>();
+            services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
             return services;
         }

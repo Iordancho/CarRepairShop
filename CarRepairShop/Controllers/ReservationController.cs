@@ -30,6 +30,7 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(ReservationWithIdFormViewModel reservationModel)
         {
             DateTime reservationDateAndTime;
@@ -96,6 +97,8 @@ namespace CarRepairShop.Controllers
             return View(reservation);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CancelConfirmed(int id)
         {
             var reservation = await reservationService.FindReservationById(id);

@@ -27,6 +27,7 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(CarFormViewModel car)
         {
             DateTime productionDate;
@@ -84,6 +85,7 @@ namespace CarRepairShop.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var car = await carService.FindCarById(id);

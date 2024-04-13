@@ -12,13 +12,11 @@ namespace CarRepairShop.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<IdentityUser> userManager;
         private readonly IAdminService adminService;
 
-        public AdminController(RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager, IAdminService _adminService)
+        public AdminController(UserManager<IdentityUser> _userManager, IAdminService _adminService)
         {
-            roleManager = _roleManager;
             userManager = _userManager;
             adminService = _adminService;
         }
