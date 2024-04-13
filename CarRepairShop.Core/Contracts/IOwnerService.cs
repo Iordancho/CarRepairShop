@@ -1,4 +1,4 @@
-﻿using CarRepairShop.Core.Models;
+﻿using CarRepairShop.Core.Models.Reservation;
 using CarRepairShop.Infrastructure.Data.Models;
 
 namespace CarRepairShop.Core.Contracts

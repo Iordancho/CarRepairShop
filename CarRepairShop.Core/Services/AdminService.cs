@@ -1,6 +1,7 @@
-﻿using CarRepairShop.Areas.Admin.Models;
-using CarRepairShop.Core.Contracts;
-using CarRepairShop.Core.Models;
+﻿using CarRepairShop.Core.Contracts;
+using CarRepairShop.Core.Models.Admin;
+using CarRepairShop.Core.Models.Car;
+using CarRepairShop.Core.Models.Reservation;
 using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;

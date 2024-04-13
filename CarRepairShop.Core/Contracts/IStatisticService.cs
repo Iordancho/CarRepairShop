@@ -1,4 +1,4 @@
-﻿using CarRepairShop.Core.Models;
+﻿using CarRepairShop.Core.Models.RepairShop;
 
 namespace CarRepairShop.Core.Contracts
 {

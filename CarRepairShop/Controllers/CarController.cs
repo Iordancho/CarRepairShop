@@ -1,11 +1,11 @@
 ﻿using CarRepairShop.Core.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using CarRepairShop.Core.Models;
 using CarRepairShop.Infrastructure.Data;
 using System.Globalization;
 using CarRepairShop.Infrastructure.Data.Models;
 using CarRepairShop.Extensions;
 using Microsoft.AspNetCore.Authorization;
+using CarRepairShop.Core.Models.Car;
 
 namespace CarRepairShop.Controllers
 {

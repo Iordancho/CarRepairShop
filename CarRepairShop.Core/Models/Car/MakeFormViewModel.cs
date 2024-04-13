@@ -1,4 +1,4 @@
-﻿namespace CarRepairShop.Core.Models
+﻿namespace CarRepairShop.Core.Models.Car
 {
     public class MakeFormViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace CarRepairShop.Core.Models
+﻿namespace CarRepairShop.Core.Models.Reservation
 {
     public class ReservationsViewModel
     {

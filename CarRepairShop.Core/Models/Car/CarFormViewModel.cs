@@ -2,7 +2,7 @@
 using static CarRepairShop.Infrastructure.Data.DataConstants;
 
 
-namespace CarRepairShop.Core.Models
+namespace CarRepairShop.Core.Models.Car
 {
     public class CarFormViewModel
     {
@@ -14,7 +14,7 @@ namespace CarRepairShop.Core.Models
         public string ProductionDate { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredErrorMessage)]
-        [StringLength(VINMax, MinimumLength =VINMax, ErrorMessage = VINLengthErrorMessage)]
+        [StringLength(VINMax, MinimumLength = VINMax, ErrorMessage = VINLengthErrorMessage)]
         public string VIN { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredErrorMessage)]

@@ -1,10 +1,10 @@
-﻿using CarRepairShop.Areas.Admin.Models;
-using CarRepairShop.Core.Contracts;
+﻿using CarRepairShop.Core.Contracts;
 using CarRepairShop.Core.Services;
 using CarRepairShop.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using CarRepairShop.Core.Models.Admin;
 
 namespace CarRepairShop.Areas.Admin.Controllers
 {

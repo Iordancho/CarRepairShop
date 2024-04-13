@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using CarRepairShop.Core.Contracts;
-using CarRepairShop.Core.Models;
+using CarRepairShop.Core.Models.Reservation;
 using CarRepairShop.Core.Services;
 using CarRepairShop.Extensions;
 using CarRepairShop.Infrastructure.Data;

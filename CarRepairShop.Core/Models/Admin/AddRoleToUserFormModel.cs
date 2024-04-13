@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CarRepairShop.Areas.Admin.Models
+namespace CarRepairShop.Core.Models.Admin
 {
     public class AddRoleToUserFormModel
     {

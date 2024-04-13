@@ -1,5 +1,5 @@
 ﻿using CarRepairShop.Core.Contracts;
-using CarRepairShop.Core.Models;
+using CarRepairShop.Core.Models.Car;
 using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;

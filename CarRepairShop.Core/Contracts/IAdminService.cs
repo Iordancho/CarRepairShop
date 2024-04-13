@@ -1,5 +1,6 @@
-﻿using CarRepairShop.Areas.Admin.Models;
-using CarRepairShop.Core.Models;
+﻿using CarRepairShop.Core.Models.Admin;
+using CarRepairShop.Core.Models.Car;
+using CarRepairShop.Core.Models.Reservation;
 using Microsoft.AspNetCore.Identity;
 
 namespace CarRepairShop.Core.Contracts
