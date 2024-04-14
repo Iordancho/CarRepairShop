@@ -15,8 +15,6 @@ namespace CarRepairShop.Core.Services
         private readonly UserManager<IdentityUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IRepository repository;
-        private Repository repository1;
-        private RoleManager<IdentityUser> roleManager1;
 
         public AdminService(IRepository _repository, UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {

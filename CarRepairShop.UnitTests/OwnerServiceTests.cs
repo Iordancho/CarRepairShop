@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarRepairShop.Core.Services;
-using CarRepairShop.Infrastructure.Data.Common;
+﻿using CarRepairShop.Core.Services;
 using CarRepairShop.Infrastructure.Data;
+using CarRepairShop.Infrastructure.Data.Common;
 using CarRepairShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using CarRepairShop.Core.Contracts;
 
 namespace CarRepairShop.UnitTests
 {
