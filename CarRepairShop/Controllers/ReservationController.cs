@@ -93,6 +93,10 @@ namespace CarRepairShop.Controllers
             {
                 return Unauthorized();
             }
+            if (reservation.StatusId == 2)
+            {
+                return BadRequest();
+            }
 
             return View(reservation);
         }

@@ -1,4 +1,4 @@
-using CarRepairShop.Core.Models;
+using CarRepairShop.Core.Models.Car;
 using CarRepairShop.Core.Services;
 using CarRepairShop.Infrastructure.Data;
 using CarRepairShop.Infrastructure.Data.Common;

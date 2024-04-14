@@ -120,7 +120,8 @@ namespace CarRepairShop.Core.Services
                     Description = r.Description,
                     Date = r.ReservationDateTime.ToString(DataConstants.DateFormat),
                     ServiceType = r.ServiceType.Name,
-                    OwnerId = r.Car.OwnerId
+                    OwnerId = r.Car.OwnerId,
+                    StatusId = r.StatusId
                 })
                 .FirstOrDefaultAsync();
 

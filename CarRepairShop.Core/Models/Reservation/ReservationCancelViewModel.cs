@@ -7,5 +7,6 @@
         public string Date { get; set; } = string.Empty;
         public string ServiceType { get; set; } = string.Empty;
         public string OwnerId { get; set; } = string.Empty;
+        public int StatusId { get; set; }
     }
 }
