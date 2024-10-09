@@ -3,7 +3,7 @@
 # CarRepairShop
 
 ## Overview
-CarRepairShop is a web-based application designed to streamline and manage the operations of an auto repair shop. It enables shop owners to track repairs, manage customer information, and maintain service records efficiently.
+CarRepairShop is a full-stack web-based application designed to streamline and manage the operations of an auto repair shop. It enables shop owners to track repairs, manage customer information, and maintain service records efficiently.
 
 ## Key Features
 
